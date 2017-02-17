@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nachhaltige Softwareentwicklung in den Digital Humanities. Konzepte und Methoden.</title>
+
+    <!-- meta information -->
+    <meta name="author" content="Torsten Schrade" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- favicons -->
+    <link rel="shortcut icon" href="resources/img/favicon.png" />
+    <link rel="apple-touch-icon" href="resources/img/apple-touch-icon.png" />
+
+    <!-- CSS reset and grid -->
+    <link href="vendor/normalize/normalize-4.1.1.css" rel="stylesheet" />
+    <link href="vendor/skeleton/skeleton-2.0.4.css" rel="stylesheet" />
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,600italic,400italic,700italic,800,800italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+    <!-- styles for included libraries -->
+
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup-1.1.0.css" />
+
+    <!-- standard presentation styles -->
+    <link href="resources/css/style.css" rel="stylesheet" />
+
+    <!-- custom presentation styles -->
+    <link href="resources/css/custom.css" rel="stylesheet" />
+
+    <!-- js needed in head -->
+
+    <!-- html5 dataset shim for IE -->
+    <script src="vendor/impress/html5-dataset.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <div class="fallback-message">
+        <p>
+            Your browser <strong>doesn't support the features required</strong> by impress.mod.js,
+            so you are presented with a simplified version of this presentation.
+        </p>
+        <p>
+            For the best experience please use the latest <strong>Chrome</strong>, <strong>Safari</strong>
+            or <strong>Firefox</strong> browser.
+        </p>
+    </div>
+
+    <div id="impress">
+
+        <div class="step">
+            <h4><strong>17.02.2017</strong> | <a href="http://www.dhd2017.ch">DHd2017, Bern</a></h4>
+
+            <h1 class="down-50">Nachhaltige Softwareentwicklung in den Digital Humanities</h1>
+
+            <h2 class="red">Konzepte und Methoden</h2>
+
+            <h4 class="down-50">
+                <strong>Slides:</strong>
+                <a href="https://digicademy.github.io/2017-dhd-sustainable-software" title="View the presentation online">
+                    https://digicademy.github.io/2017-dhd-sustainable-software
+                </a>
+            </h4>
+
+            <h5>
+                <strong><a href="https://orcid.org/0000-0002-0953-2818">Torsten Schrade</a></strong> |
+                <img src="resources/img/Twitter_bird_logo_2012.svg" alt="Twitter" class="twitter-icon" />
+                <a href="https://twitter.com/digicademy" title="Digital Academy on Twitter">@digicademy</a> |
+                <img src="resources/img/Octicons-mark-github.svg" alt="Twitter" class="gh-icon" />
+                <a href="https://github.com/digicademy/" title="Digital Academy on GitHub">digicademy</a> |
+                <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>
+            </h5>
+        </div>
+
+        <div class="step">
+            <h2>Gliederung</h2>
+            <ol class="line-height-one-five">
+                <li>
+                    Herausforderungen für die nachhaltige Entwicklung von Software in
+                    den Digital Humanities
+                </li>
+                <li>
+                    Konzepte und Methoden für die nachhaltige Entwicklung
+                    von Software in den Digital Humanities
+                </li>
+                <li>
+                    Anwendungsbeispiel: Das Corpus Vitrearum Medii Aevi
+                </li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h1 class="red">01</h1>
+            <h2 class="line-height-one-five">
+                Herausforderungen für die nachhaltige Entwicklung von Software in den Digital Humanities
+            </h2>
+        </div>
+
+        <div class="step">
+            <h2>Das Problem</h2>
+            <h3 class="red up-25 after-25">Gründe für nicht nachhaltige Softwareentwicklung</h3>
+            <ul class="medium line-height-one-two-five">
+                <li class="substep">
+                    Ausgelaufene Projektfinanzierung, wodurch der Weiterbetrieb der Software
+                    nicht mehr gewährleistet ist
+                </li>
+                <li class="substep">
+                    Entwickler_innen, die dem Projekt nicht mehr zu Verfügung stehen, aber vor ihrem
+                    Weggang die ausschließlichen Wissensträger waren
+                </li>
+                <li class="substep">
+                    Veraltete und/oder nicht mehr wartbare Software-Infrastruktur
+                    (mit implizitem, undokumentierten "Infrastrukturwissen")
+                </li>
+                <li class="substep">
+                    Veralteter oder unverständlicher Programmcode, der von neu einsteigenden
+                    Entwickler_innen weitergeführt werden muss
+                </li>
+                <li class="substep">
+                    Vermeidbare Sicherheitslücken in der Software, die erst im Produktivbetrieb auffallen
+                    und einen Weiterbetrieb der Software verhindern
+                </li>
+                <li class="substep">
+                    Bugs in der Software, die erst im Produktivbetrieb auffallen, da vorher
+                    keine Softwaretests durchgeführt wurden
+                </li>
+                <li class="substep">
+                    Datenverluste oder unerwartetes Verhalten der Software, da die Anwendung nicht
+                    unter Produktiv-Bedingungen (infrastrukturell gesehen) entwickelt wurde
+                </li>
+                <li class="substep">
+                    Fehlendes Monitoring der Forschungssoftware, wodurch Störfälle
+                    nicht oder erst spät auffallen
+                </li>
+            </ul>
+        </div>
+
+        <div class="step centered">
+            <h2>Das Problem</h2>
+            <h3 class="red up-25 after-25">Gründe für nicht nachhaltige Softwareentwicklung</h3>
+            <p>
+                <a href="https://pixabay.com/de/roboter-android-148989/" title="Android, Lizenz CC0">
+                    <img src="resources/img/robot.png" style="width: 200px;" />
+                </a>
+            </p>
+            <h3>Alle diese Gründe sind übrigens nicht unbedingt spezifisch für die Digital Humanities!</h3>
+            <h4>
+                Aber wir diskutieren Lösungsansätze aus der freien Wirtschaft und der Softwareindustrie bisher nur sehr begrenzt...
+            </h4>
+        </div>
+
+        <div class="step">
+            <h2>Eine weitere Herausforderung</h2>
+            <h3 class="red up-25 after-25">Die schnellen technischen Innovationszyklen im Verhältnis zu den Projektlaufzeiten</h3>
+            <img src="resources/img/technologies.svg" style="width: 80%" />
+        </div>
+
+        <div class="step">
+            <h2>Aktuelle Studie</h2>
+            <h3 class="red up-25 after-25">Simon Hettrick, The Software Sustainability Institute, 2016</h3>
+            <div class="row">
+                <div class="four columns">
+                    <a href="http://repository.jisc.ac.uk/6332/1/Research_Software_Sustainability_Report_on_KE_Workshop_Feb_2016_FINAL.pdf" title="PDF aufrufen">
+                        <img class="outline" style="width: 86%" src="resources/img/Research_Software_Sustainability_Cover.png" title="Simon Hettrick: Research Software Sustainability. Report on a Knowledge Exchange Workshop.">
+                    </a>
+                </div>
+                <div class="eight columns">
+                    <h5>PDF: <a href="http://repository.jisc.ac.uk/6332/1/Research_Software_Sustainability_Report_on_KE_Workshop_Feb_2016_FINAL.pdf">http://bit.ly/23jxw7D</a></h5>
+                    <blockquote class="substep small">
+                        "Many researchers know how to code, but few understand
+                        the wider set of skills that are needed to develop reliable,
+                        reproducible and reusable software. [...] software
+                        engineering should be incorporated [...]
+                        at the very start of a research career"
+                        <cite>[S.14]</cite>
+                    </blockquote>
+                    <blockquote class="substep small" style="margin-top: 1em;">
+                        "We must raise awareness of the fundamental role of software
+                        in research [...] All stakeholders, from researchers to policymakers,
+                        must be included in this awareness raising campaign"
+                        <cite>[S.11]</cite>
+                    </blockquote>
+                    <blockquote class="substep small" style="margin-top: 1em;">
+                        "Research software should be recognised as a
+                        valuable research object in line with the investment
+                        it receives and the research it makes possible [...]
+                        Research software should become a citable
+                        scientific deliverable of equivalent value to
+                        researchers as that of a publication"
+                        <cite>[S.11]</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Digital Humanities Craftsmanship!</h2>
+            <h3 class="red up-25 after-25">
+                Auf die Praxis gerichtete, methodische Kompetenzen
+            </h3>
+            <h4><strong>"Digital Humanities Craftsmanship"</strong> meint...</h4>
+            <div class="row">
+                <div class="nine columns">
+                    <ul class="medium line-height-one-two-five">
+                        <li class="substep">
+                            eine schon im Studium beginnende Beschäftigung mit dem Thema Softwareentwicklung,
+                        </li>
+                        <li class="substep">
+                            einen durch ausreichend Entwicklungspraxis erzielten Kompetenzaufbau,
+                        </li>
+                        <li class="substep">
+                            eine kontinuierliche Verbesserung der eigenen entwicklerischen Fähigkeiten und
+                            eine beständige Justierung des eigenen Wissens auf neue Technologien und Methoden,
+                        </li>
+                        <li class="substep">
+                            ein methodisches Wissen um die Prinzipien nachhaltiger Softwareentwicklung auf allen
+                            Tätigkeitsebenen (auch Digital Humanities Projektmanager_innen müssen wissen, wie gute
+                            und nachhaltige Software entwickelt wird),
+                        </li>
+                        <li class="substep">
+                            eine Anerkennung von guter, nachhaltig entwickelter Forschungssoftware
+                            als eigene wissenschaftliche Leistung, vergleichbar mit Publikationen.
+                        </li>
+                    </ul>
+                </div>
+                <div class="three columns">
+                    <img src="resources/img/revolution.svg" />
+                    <p class="medium red centered">Digital Humanities Craftsmanship NOW!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="step">
+            <h1 class="red">02</h1>
+            <h2 class="line-height-one-five">
+                Konzepte und Methoden für die nachhaltige Entwicklung
+                von Software in den Digital Humanities
+            </h2>
+        </div>
+
+        <div class="step">
+            <h2>Nachhaltige Entwicklung</h2>
+            <h3 class="red up-25 after-25">Iterativ, kontinuierlich, beständige Kommunikation</h3>
+            <div class="row mfp-lightbox">
+                <div class="seven columns">
+                    <a href="resources/img/ebenen.svg">
+                        <img src="resources/img/ebenen.svg" title="Nachhaltigkeit durch kontinuierlichen, nachvollziehbaren Bereitstellungsprozess" />
+                    </a>
+                </div>
+                <div class="five columns">
+                    <ul class="small line-height-one-two-five" style="margin-left: -50px">
+                        <li class="substep">
+                            Jede Phase (Konzeption, Entwicklung, Deployment, Kontrolle) kann als
+                            iterativer, sich gegenseitig beeinflussender Kreislauf begriffen werden
+                            (dunkle und hellgraue Pfeile)
+                        </li>
+                        <li class="substep">
+                            In Einklang mit agilen Entwicklungsprinzipien sollten kleinschrittige
+                            Iterationen gewählt werden, die idealerweise genau ein Software-Feature
+                            in den Blick nehmen
+                        </li>
+                        <li class="substep">
+                            Im Sinne einer "Continuous Delivery" (kontinuierliche Bereitstellung) wird für
+                            jedes Feature der links dargestellte Entwicklungszyklus durchlaufen
+                        </li>
+                        <li class="substep">
+                            Dies führt zu einer beständigen und nachvollziehbaren Abgeschlossenheit
+                            einer Forschungssoftware auf allen Ebenen
+                        </li>
+                        <li class="substep">
+                            Zentrales Element ist die kontinuierliche Kommunikation aller Projektbeteiligten
+                            untereinander in allen Entwicklungsphasen
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-25">Konzeptionsebene</h2>
+            <h3 class="red up-25 after-25">Domain Driven Design (DDD)</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Domain-Driven Design ist eine konzeptionelle Herangehensweise an die Modellierung komplexer Software.
+                        </li>
+                         <li>
+                            Das Hauptaugenmerk fällt dabei auf die Einführung einer ubiquitären (allgemein verständlichen) Sprache,
+                            welche in allen Bereichen der Softwareerstellung von den Konzeptionsgesprächen mit den
+                            Fachwissenschaftler_innen bis hin zur Code-Ebene verwendet werden sollte.
+                         </li>
+                         <li>
+                            Durch regelmäßige Iterationen nach dem DDD-Prinzip kann sich die Software kontinuierlich mit der sich
+                            stetig wandelnden Projektrealität verändern. Die Codebasis bleibt dabei im Einklang mit der
+                            Konzeptions- bzw. Modellierungsebene.
+                         </li>
+                    </ul>
+                    <p class="small">
+                        Siehe auch D. Kasper, M. Grüntgens: Nachhaltige Konzeptionsmethoden für Digital Humanities Projekte.
+                        <a href="https://digicademy.github.io/2017-DHD-propy/#/step-11">Vortrag auf der DHd2017, 15.02.2017</a>
+                    </p>
+                </div>
+                <div class="six columns">
+                    <a href="resources/img/ebenen_konzeption.svg">
+                        <img src="resources/img/ebenen_konzeption.svg" />
+                    </a>
+                    <a href="resources/img/konzeption_ddd.png">
+                        <img src="resources/img/konzeption_ddd.png" />
+                    </a>
+                    <p class="x-small">
+                        Beispiel einer Basis-Domänenmodellierung für die Plattform Hessische Kunstdenkmäler.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Konzeptionsebene</h2>
+            <h3 class="red up-25 after-25">Behaviour Driven Development (BDD)</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            BDD beschreibt die Funktionalität einer Anwendungsdomäne
+                            mittels formalisierter Szenarien.
+                        </li>
+                         <li>
+                            BDD ist ein "outside-in"-Ansatz, der mit dem Blick der Nutzer_innen
+                            auf eine Forschungssoftware blickt und deren Funktionalität in ausführbaren Tests dokumentiert.
+                         </li>
+                         <li>
+                            Die Tests werden in natürlicher Sprache nach einem festen Dreischritt-Prinzip formuliert.
+                         </li>
+                         <li>
+                            Dadurch kann die oftmals "flüchtige" (= wenig nachhaltige) Präsentationsschicht einer Software in
+                            Zusammenarbeit mit den Fachwissenschaftler_innen gemeinsam beschrieben und nachhaltig dokumentiert werden.
+                         </li>
+                    </ul>
+                    <p class="small">
+                        Siehe auch D. Kasper, M. Grüntgens: Nachhaltige Konzeptionsmethoden für Digital Humanities Projekte.
+                        <a href="https://digicademy.github.io/2017-DHD-propy/#/step-14">Vortrag auf der DHd2017, 15.02.2017</a>
+                    </p>
+                </div>
+                <div class="five columns">
+                    <a href="resources/img/ebenen_konzeption.svg">
+                        <img src="resources/img/ebenen_konzeption.svg" />
+                    </a>
+                    <a href="resources/img/konzeption_bdd.png">
+                        <img src="resources/img/konzeption_bdd.png" />
+                    </a>
+                    <p class="x-small">
+                        Testszenarien für das Such-Feature von <a href="http://gutenberg-biographics.ub.uni-mainz.de">Gutenberg Biographics</a>
+                        in natürlicher, allgemeinverständlicher Sprache
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Entwicklungsebene: DevOps</h2>
+            <h3 class="red up-25 after-25">DevOps: Nachhaltigkeit durch "Infrastructure as Code"</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            DevOps benutzt Werkzeuge, um eine automatische Reproduzierbarkeit
+                            der Softwareanwendung einschließlich ihrer Umgebung zu erreichen.
+                        </li>
+                         <li>
+                            Der große Vorteil liegt in der automatisch
+                            enstehenden Dokumention und Nachvollziehbarkeit spezialisierter Software-Infrastrukturen.
+                            Es gibt kein implizites Wissen mehr, dass nur "der Admin" hat.
+                         </li>
+                         <li>
+                             Gleichzeitig wird die Laufzeitumgebung von der Hardware abstrahiert (bspw. durch Virtualisierung).
+                             Eine Forschungssoftware wird somit "cloud-fähig", bzw. kann in beliebigen Infrastrukturen reproduziert werden.
+                         </li>
+                         <li>
+                            Die Konfigurationen sind meist einfache Textdateien in einer bestimmten Syntax,
+                            die sich gut versionieren lassen. Somit lässt sich jede Modifikation an einer Anwendungsumgebung
+                            sauber dokumentieren und protokollieren.
+                         </li>
+                    </ul>
+                </div>
+                <div class="six columns">
+                    <a href="resources/img/ebenen_entwicklung.svg">
+                        <img src="resources/img/ebenen_entwicklung.svg" />
+                    </a>
+                    <a href="resources/img/entwicklung_devops.png">
+                        <img src="resources/img/entwicklung_devops.png" />
+                    </a>
+                    <p class="x-small">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-25">Entwicklungsebene: Coding</h2>
+            <h3 class="red up-25 after-25">Feste Begrifflichkeiten, Coding Guidelines, Pair Programming</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Die innerhalb einer Anwendungsdomäne festgelegten
+                            Begrifflichkeiten sollten konsequent im Code durchgehalten werden.
+                        </li>
+                         <li>
+                            Idealerweise wird der Code "sprechend" geschrieben. Durch den Einsatz einer verständlichen
+                            Sprache kann die meiste Funktionalität von allen Projektbeteiligten verstanden werden.
+                         </li>
+                         <li>
+                            Bei der Abstraktion helfen Frameworks, die Prinzipien des Domain Driven Design integrieren
+                            (jeweils sprachenspezifisch, für PHP bspw. das <a href="https://flow.neos.io/">Flow Framework</a>
+                            oder auch <a href="https://symfony.com/">Symfony</a>).
+                         </li>
+                         <li>
+                            Daneben ist der konsequente Einsatz von Coding Guidelines entscheidend für die Nachhaltigkeit.
+                         </li>
+                         <li>
+                             Methoden wie bspw. das "Pair Programming" können helfen, besseren Code zu schreiben
+                             und die Wissensträgerschaft auf mehrere Schultern im Team zu verteilen.
+                         </li>
+                    </ul>
+                </div>
+                <div class="five columns">
+                    <a href="resources/img/ebenen_entwicklung.svg">
+                        <img src="resources/img/ebenen_entwicklung.svg" />
+                    </a>
+                    <a href="resources/img/entwicklung_ddd.png">
+                        <img src="resources/img/entwicklung_ddd.png" />
+                    </a>
+                    <p class="x-small">
+                        Nach DDD-Prinzipien entwickelter, verständlicher Code einer Anwendung
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Entwicklungsebene: Design</h2>
+            <h3 class="red up-25 after-25">Geräteunabhängigkeit, Style Guides, Barrierearmut</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            In der Präsentationsschicht einer Anwendung sollte (insbesondere im Bereich von Webapplikationen)
+                            auf Geräteunabhängigkeit geachtet werden (Responsive Design).
+                        </li>
+                        <li>
+                            Barrierearme Entwicklung führt dazu, dass die Präsentationsschicht
+                            einfacher, effizienter, besser nachvollziehbahr und somit nachhaltiger gestaltet wird.
+                        </li>
+                        <li>
+                            Auch hier helfen Frameworks (bspw. <a href="http://getbootstrap.com/">Bootstrap</a>,
+                            <a href="http://foundation.zurb.com/">Foundation</a> oder auch Microframeworks)
+                            Zeit bei der Implementierung zu sparen und gleichzeitig standardkonform zu arbeiten.
+                        </li>
+                        <li>
+                            Es empfiehlt sich, schon in der frühen Designphase bei Wireframes und MockUps auf
+                            Webtechnologien zu setzen (HTML5/CSS3). So angelegte Designs können gut versioniert und
+                            bereits mittels BDD getestet werden. Zudem ergibt ist ein besserer Feedback-Prozess,
+                            da die Oberfläche schon funktional ist.
+                        </li>
+                    </ul>
+                </div>
+                <div class="six columns">
+                    <a href="resources/img/ebenen_entwicklung.svg">
+                        <img src="resources/img/ebenen_entwicklung.svg" />
+                    </a>
+                    <a class="down-50" href="resources/img/entwicklung_rwd.png">
+                        <img src="resources/img/entwicklung_rwd.png" />
+                    </a>
+                    <p class="x-small">
+                        Ein geräteunabhängiges (responsives) Design für die Präsentationsschicht
+                        ist nachhaltiger und zugänglicher.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Commit</h2>
+            <h3 class="red up-25 after-25">Versionskontrolle auf allen Ebenen</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Alle bisher genannten Konzepte streben eine Versionierbarkeit ihrer Outputs an, was die Nachvollziehbarkeit
+                            und somit die Nachhaltigkeit auf der Software-Ebene deutlich steigert.
+                        </li>
+                        <li>
+                            Auf diese Weise hergestellte Software legt nicht nur offen, wie sie funktioniert, sondern wie sie hergestellt wurde.
+                        </li>
+                        <li>
+                            Dem Commit in ein Versionskontrollsystem kommt im nachhaltigen Entwicklungsprozess eine zentrale
+                            Bedeutung zu: Durch einen Commit werden automatisierte Test- und Bereitstellungsroutinen in
+                            Gang gesetzt (z.B. mittels einer Continuous Integration Software wie bspw. <a href="https://jenkins.io/">Jenkins</a>).
+                        </li>
+                        <li>
+                            Schlägt ein Test- bzw. Buildprozess nach einem Commit fehl, erhalten die Projektbeteiligten sofort
+                            Feedback. Die fehlerhafte Software wird dabei nicht auf das Produktiv-System ausgespielt sondern kann
+                            zuerst korrigiert werden.
+                        </li>
+                    </ul>
+                </div>
+                <div class="five columns">
+                    <a href="resources/img/ebenen_entwicklung.svg">
+                        <img src="resources/img/ebenen_entwicklung.svg" />
+                    </a>
+                    <a class="down-50" href="resources/img/entwicklung_git.png">
+                        <img src="resources/img/entwicklung_git.png" />
+                    </a>
+                    <p class="small">Versionskontrolle mit Git</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Deployment-Ebene</h2>
+            <h3 class="red up-25 after-25">Automatisiertes Testing</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Idealerweise gibt es in einem nachhaltigen Entwicklungsprozess unterschiedliche
+                            Testebenen: Auf der Code-Ebene sind dies Unit-Tests, die einzelne Einheiten (Units)
+                            einer Software auf korrekte Funktionsweise überprüfen.
+                        </li>
+                         <li>
+                            Darauf folgt die Ebene der Akzeptanztests (hier kommt ein BDD Framework
+                            wie bspw. <a href="http://behat.org/en/latest/">Behat</a> zum Einsatz). Die in der
+                            Modellierungs- und Entwicklungsphase erstellten Szenarien werden getestet.
+                         </li>
+                         <li>
+                            Im Bereich Webapplikationen sind auch explorative Tests (manuelle Tests) zuweilen
+                            als dritte Teststufe notwendig, da die Vielzahl an Endgeräten und die unterschiedlichen
+                            Browser oft eine manuelle Überprüfung notwendig machen. Hier helfen
+                            virtuelle Maschinen und Smartphone- bzw. Tablet-Emulatoren oder
+                            ein auf das Cross-Browser-Testing spezialisierter (kommerzieller) Webdienst.
+                         </li>
+                    </ul>
+                </div>
+                <div class="five columns">
+                    <a href="resources/img/ebenen_deploy_control.svg">
+                        <img src="resources/img/ebenen_deploy_control.svg" />
+                    </a>
+                    <a class="down-50" href="resources/img/deploy_control_bdd.gif">
+                        <img src="resources/img/deploy_control_bdd.gif" />
+                    </a>
+                    <p class="x-small">
+                        Test-Run des vorher gezeigten Such-Szenarios von <a href="http://gutenberg-biographics.ub.uni-mainz.de/home.html">Gutenberg Biographics</a>
+                        mit <a href="http://behat.org/en/latest/">Behat</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Kontrollebene</h2>
+            <h3 class="red up-25 after-25">Automatisches und kontinuierliches Monitoring</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Ist eine Applikation erfolgreich in die Produktiv-Umgebung eingespielt,
+                            ist zur Sicherstellung des Betriebs und somit der nachhaltigen Verfügbarkeit
+                            der Anwendung ein kontinuierliches Monitoring unabdingbar.
+                        </li>
+                        <li>
+                            Nur durch ein Monitoring können unvorhergesehene Bugs oder Seiteneffekte beim
+                            Betrieb einer Software frühzeitig erkannt und bearbeitet werden.
+                        </li>
+                        <li>
+                            Auch für das Monitoring existieren sehr gute Programme wie bspw. <a href="https://www.nagios.org/">Nagios</a>
+                            oder <a href="http://www.zabbix.com/">Zabbix</a> oder <a href="http://www.cacti.net/">Cacti</a>, die
+                            mit denen sich eine 24/7 Überwachung der Applikation umsetzen lässt.
+                        </li>
+                    </ul>
+                </div>
+                <div class="five columns">
+                    <a href="resources/img/ebenen_deploy_control.svg">
+                        <img src="resources/img/ebenen_deploy_control.svg" />
+                    </a>
+                    <a class="down-50" href="resources/img/deploy_control_netdata.gif">
+                        <img src="resources/img/deploy_control_netdata.gif" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h1 class="red">03</h1>
+            <h2 class="line-height-one-five">
+                Anwendungsbeispiel
+            </h2>
+            <h3>Das Corpus Vitrearum Medii Aevi</h3>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Corpus Vitrearum Medii Aevi</h2>
+            <h3 class="red up-25 after-25">Projektarchitektur und Online-Applikation</h3>
+            <div class="row mfp-lightbox">
+                <div class="five columns">
+                    <a href="resources/img/cvma_workflow.png">
+                        <img src="resources/img/cvma_workflow.png" alt="" title="" />
+                    </a>
+                </div>
+                <div class="three columns centered">
+                    <a href="resources/img/screenshots_cvma_01.png">
+                        <img src="resources/img/screenshots_cvma_01.png" alt="" title=""  style="height: 180px;" />
+                    </a>
+                    <p class="x-small"><a href="http://www.corpusvitrearum.de/">Startseite</a></p>
+                </div>
+                <div class="three columns centered">
+                    <a href="resources/img/screenshots_cvma_03.png">
+                        <img src="resources/img/screenshots_cvma_03.png" alt="" title="" style="height: 180px;" />
+                    </a>
+                    <p class="x-small"><a href="http://id.corpusvitrearum.de/images/3431.html">Funktionalitäten</a></p>
+                </div>
+                <div class="six columns">
+                    <ul class="x-small line-height-one-two-five">
+                        <li>
+                            Forschungsplattform mit digitalem Bildarchiv (hochauflösende TIFFs) unter CC BY-NC 4.0 Lizenz.
+                        </li>
+                        <li>
+                            Metadaten werden als XMP direkt in die Bilder eingebettet. Dadurch können die Forschungsprimärdaten (Bilder)
+                            und die zugehörigen Metadaten vollständig separat von der eigentlichen Webapplikation gehalten werden.
+                            Nachhaltigkeit durch Systemneutralität der Daten.
+                        </li>
+                        <li>
+                            Die Webapplikation speist bzw. extrahiert den Datenbestand, auf dem die Online-Funktionalitäten
+                            umgesetzt sind, immer aus den Forschungsprimärdaten (den Bildern mit eingebetteten Metadaten).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2 class="down-50">Corpus Vitrearum Medii Aevi</h2>
+            <h3 class="red up-25 after-25">Verständliche und einheitliche Sprache auf allen Ebenen</h3>
+            <div class="row mfp-lightbox centered">
+                <div class="four columns">
+                    <p>
+                        <a href="resources/img/cvma_ddd.png">
+                            <img src="resources/img/cvma_ddd.png" alt="" title="" style="display: block; height: 245px;" />
+                        </a>
+                        <span class="small">Domain Model</span>
+                    </p>
+                    <p>
+                        <a href="resources/img/cvma_code_ddd.png">
+                            <img src="resources/img/cvma_code_ddd.png" alt="" title="" style="display: block; height: 245px;" />
+                        </a>
+                        <span class="small">Applikations-Code</span>
+                    </p>
+                </div>
+                <div class="four columns">
+                    <p>
+                        <a href="resources/img/cvma_code_db.png">
+                            <img src="resources/img/cvma_code_db.png" alt="" title="" style="display: block; height: 245px;" />
+                        </a>
+                        <span class="small">Datenbankschema</span>
+                    </p>
+                    <p>
+                        <a href="resources/img/cvma_rest_xmp.png">
+                            <img src="resources/img/cvma_rest_xmp.png" alt="" title="" style="display: block; height: 245px;" />
+                        </a>
+                        <span class="small">XMP Schnittstelle</span>
+                    </p>
+                </div>
+                <div class="four columns">
+                    <p class="x-small" style="text-align: left">
+                        Es wurde bei der Umsetzung darauf geachtet, auf allen Ebenen eine durchgängige, der Wissensdomäne
+                        bzw. dem Forschungsgegestand "Glasmalerei" angemessene Sprache einzusetzen. Von der Modellierung
+                        über das Datenbankschema bis hin zum Code und den offenen Schnittstellen.
+                    </p>
+                    <p class="x-small" style="text-align: left">
+                        Als Vokabular wurden hierbei die Begrifflichkeiten aus dem XMP-Standard gewählt, da für sie
+                        bereits Definitionen existieren. Für CVMA-spezifische Begrifflichkeiten wurde ein eigenes,
+                        kontrolliertes Vokabular eingeführt und veröffentlicht.
+                        Siehe: <a href="https://lod.academy/cvma/ns/xmp/">https://lod.academy/cvma/ns/xmp/</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Corpus Vitrearum Medii Aevi</h2>
+            <h3 class="red up-25 after-25">Testing und Monitoring</h3>
+            <div class="row mfp-lightbox">
+                <div class="six columns">
+                    <ul class="small line-height-one-two-five">
+                        <li>
+                            Für die Funktionalitäten der CVMA-Oberfläche wurden umfangreiche BDD-Testszenarien
+                            entwickelt. Diese werden vor jedem Deployment von neuen Funktionalitäten in das
+                            Produktiv-System ausgeführt.
+                        </li>
+                        <li>
+                            Ein Zabbix-basiertes Monitoring macht frühzeitig auf Unregelmäßigkeiten im Betrieb
+                            oder Lastspitzen aufmerksam (bspw. via automatischer E-Mail-Benarichtigungen an die
+                            DevOps).
+                        </li>
+                    </ul>
+                </div>
+                <div class="four columns">
+                    <a href="resources/img/cvma_deploy_bdd.png">
+                        <img src="resources/img/cvma_deploy_bdd.png" />
+                    </a>
+                    <p class="small">BDD Tests</p>
+                    <a class="down-50" href="resources/img/cvma_deploy_zabbix.png">
+                        <img src="resources/img/cvma_deploy_zabbix.png" />
+                    </a>
+                    <p class="small">Zabbix Monitoring</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Fazit</h2>
+            <h3 class="red up-25 after-25">Nachhaltige Softwareentwicklung in den Digital Humanities bedeutet...</h3>
+            <ul class="line-height-one-two-five">
+                <li class="substep">eine beständige Kommunikation aller Projektbeteiligten.</li>
+                <li class="substep">ein gemeinsames Vokabular festzulegen und dies auf allen Ebenen anzuwenden.</li>
+                <li class="substep">forschungsgetriebene, agile Entwicklungsmethoden einzusetzen.</li>
+                <li class="substep">einen nachvollziehbaren Entwicklungsprozess durch Versionskontrolle zu gewährleisten.</li>
+                <li class="substep">die Applikations-Infrastruktur zu virtualisieren und zu automatisieren.</li>
+                <li class="substep">Softwaretests vor jedem Live-Deployment durchzuführen.</li>
+                <li class="substep">die Applikation im Produktivbetrieb kontinuierlich zu überwachen.</li>
+                <li class="substep">die Forschungsdaten über Schnittstellen bereitzustellen.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <div class="centered">
+                <h1>F I N I S</h1>
+                <h2>Danke für Ihre Aufmerksamkeit!</h2>
+            </div>
+        </div>
+
+        <div class="step">
+
+            <h2 class="down-25">Quellenangaben</h2>
+
+            <h4>Literatur</h4>
+
+            <ul class="small pull-up">
+                <li>
+                    <a href="http://agilemanifesto.org/iso/de/">Fowler u.a., Manifest für Agile Softwareentwicklung, 2001</a>
+                </li>
+                <li>
+                    <a href="http://repository.jisc.ac.uk/6332/1/Research_Software_Sustainability_Report_on_KE_Workshop_Feb_2016_FINAL.pdf">Hettrick, Research Software Sustainability, Edinburgh 2016</a>
+                </li>
+                <li>
+                    <a href="http://www.status-quo-agile.de/">Hochschule Koblenz, "Status Quo Agile", Koblenz 2015</a>
+                </li>
+                <li>
+                    <a href="https://hds.hebis.de/ubmz/Record/HEB350821194">Passig/Jander, Weniger schlecht programmieren, Köln 2014</a>
+                </li>
+                <li>
+                    <a href="http://www.amazon.de/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577">Vernon, Implementing Domain Driven Design, Upper Saddle River NJ u.a 2013</a>
+                </li>
+                <li>
+                    <a href="https://www.dpunkt.de/buecher/4934/continuous-delivery.html">Wolff, Continuous Delivery, Heidelberg 2015</a>
+                </li>
+            </ul>
+
+            <h4>Verwendete Software</h4>
+
+            <ul class="small pull-up">
+                <li>
+                    <a href="https://github.com/impress/impress.js">Impress.js</a> (Präsentation)
+                </li>
+                <li>
+                    <a href="https://jquery.com/">jQuery</a> (Animationen)
+                </li>
+                <li>
+                    <a href="https://github.com/dimsemenov/Magnific-Popup">Magnific Popup</a> (Lightbox)
+                </li>
+                <li>
+                    <a href="http://getskeleton.com/">Skeleton CSS</a> (CSS Boilerplate)
+                </li>
+            </ul>
+
+            <h4>Download</h4>
+            <ul class="small pull-up">
+                <li>
+                    <a href="https://digicademy.github.io/2017-dhd-sustainable-software">
+                        https://digicademy.github.io/2017-dhd-sustainable-software
+                    </a>
+                </li>
+                <li>
+                    Alle Inhalte, Illustrationen und Bilder sind frei zur Weiterverwendung und Modifikation.<br/>
+                    Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, Torsten Schrade
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- jquery -->
+    <script src="vendor/jquery/jquery-1.11.0.min.js"></script>
+
+    <!-- magnific popup -->
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min-1.1.0.js"></script>
+    <script src="resources/js/magnific-popup.lightbox.js"></script>
+
+    <!-- impress.mod.js -->
+    <script src="vendor/impress/impress.fork.js"></script>
+    <script src="vendor/impress/impress-slidenum.js"></script>
+    <script>
+        var obj = impress();
+        obj.init();
+        initSlideNo(obj);
+    </script>
+
+</body>
+</html>
